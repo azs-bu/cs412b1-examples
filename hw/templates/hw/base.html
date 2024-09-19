@@ -1,0 +1,31 @@
+<!-- hw/templates/hw/base.html 
+ A template with common HTML code that will be re-used by 
+ all of the other templates.
+ -->
+
+ {% load static %}
+<html>
+    <head>
+        <title>Hello, world!</title>
+        <!-- <link rel="stylesheet" href="/static/styles.css"> -->
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <!-- <li><a href="/hw">Home</a></li>
+                <li><a href="/hw/about">About</a></li> -->
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+        <!-- fill in this section with specific page detail -->
+        {% endblock %}
+
+        <hr>
+        This page was generated at {{current_time}}.
+    </body>
+</html>

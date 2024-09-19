@@ -1,12 +1,7 @@
 <!-- hw/templates/hw/home.html -->
+{% extends 'hw/base.html' %}
 
-<html>
-    <head>
-        <title>Hello, world!</title>
-        <link rel="stylesheet" href="/static/styles.css">
-    </head>
-
-    <body>
+{% block content %}
         <h1>Hello, world!</h1>
 
         <p>Welcome to our first Django web application!</p>
@@ -14,7 +9,4 @@
         <p>This page is brought to you by the letters
             {{letter1}} and {{letter2}} and by the number {{number}}.
         </p>
-        <hr>
-        This page was generated at {{current_time}}.
-    </body>
-</html>
+{% endblock %}

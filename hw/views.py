@@ -39,3 +39,20 @@ def home(request):
 
     # delegate rendering work to the template
     return render(request, template_name, context)
+
+
+def about(request):
+    '''
+    Function to handle the URL request for /hw/about (about page).
+    Delegate rendering to the template hw/about.html.
+    '''
+    # use this template to render the response
+    template_name = 'hw/about.html'
+
+    # create a dictionary of context variables for the template:
+    context = {
+        "current_time" : time.ctime(),
+    }
+
+    # delegate rendering work to the template
+    return render(request, template_name, context)
