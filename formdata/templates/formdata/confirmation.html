@@ -1,0 +1,19 @@
+<!-- formdata/confirmation.html
+ Show a response to the form submission. -->
+
+ {% extends 'formdata/base.html' %}
+
+ {% block content %}
+ <!-- fill in this section with specific page detail -->
+
+ <div>
+    <h1>Confirmation</h1>
+
+    <p>Hi, {{name}}!</p>
+
+    <p style="color: {{favorite_color}}">
+        You said your favorite color was {{favorite_color}}.
+    </p>
+ </div>
+
+ {% endblock %}
