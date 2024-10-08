@@ -7,25 +7,26 @@
 {% block content %}
 <h1>Show all Articles</h1>
 
-<main class="grid-container"><!-- was <div> -->
+<main class="grid-container">
     <!-- loop to display each Article -->
     {% for a in articles %}
-    <article><!-- was <div> -->
-
-        <!-- new: display the image URL stored in database -->
+    <article>
+        <a href="{% url 'article' a.pk %}">
         <img src="{{a.image_url}}" alt="{{a.image_url}}">
+        </a>
 
-        <div> <!-- NEW -->
-            <h2>{{a.title}}</h2>
+        <div> 
+            <!-- a.pk is the primary key (number) on the Article identified by a -->
+            <h2><a href="{% url 'article' a.pk %}">{{a.title}}</a></h2>
             <h3>by {{a.author}} at {{a.published}}</h3>
 
             <p>
                 {{a.text}}
             </p>
-        </div> <!-- NEW -->
-    </article><!-- was </div> -->
+        </div> 
+    </article>
     {% endfor %}
 
-</main><!-- was </div> -->
+</main>
 {% endblock %}
 
