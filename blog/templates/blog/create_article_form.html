@@ -1,0 +1,34 @@
+<!-- blog/templates/blog/create_article_form.html -->
+
+{% extends 'blog/base.html'  %}
+
+{% block content %}
+
+<h2>Create a new Article</h2>
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<!-- simple way to display the form, all one line -->
+<!-- {{form}} -->
+
+<!-- each field on its own line -->
+<!-- {{form.as_p}} -->
+
+<table>
+    <!-- display form as a table -->
+    {{form.as_table}}
+
+    <tr>
+        <td></td>
+        <td><input type="submit" name="submit" value="Create Article">
+        </form>
+        <!-- NOTE: the cancel button is its own form!!!! -->
+        <form action="{% url 'show_all' %}">
+            <input type="submit" name="Cancel" value="Cancel">
+        </form>
+        </td>
+    </tr>
+</table>
+
+
+{% endblock %}
