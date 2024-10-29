@@ -1,0 +1,22 @@
+<!-- blog/templates/blog/login.html -->
+
+{% extends 'blog/base.html'  %}
+
+{% block content %}
+
+<h2>Login</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <input type="submit" name="submit" value="Login">
+    <!-- what page to show next, i.e., after login success -->
+    {% if request.GET.next %}
+    <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% else %}
+    <input type="hidden" name="next" value="{% url 'show_all' %}">
+    {% endif %}
+</form>
+
+{% endblock %}
