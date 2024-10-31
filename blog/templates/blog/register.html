@@ -1,0 +1,19 @@
+<!-- blog/templates/blog/register.html -->
+
+{% extends 'blog/base.html'  %}
+
+{% block content %}
+
+<h2>Register for a new Account</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <table>
+    {{form.as_table}}
+    </table>
+
+    <input type="submit" name="register" value="register">
+</form>
+
+{% endblock %}
