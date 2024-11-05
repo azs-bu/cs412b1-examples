@@ -1,0 +1,71 @@
+<!-- templates/marathon_analytics/results.html -->
+{% extends 'marathon_analytics/base.html' %}
+{% block content %}
+<div class="container">
+    
+    <div class="row">
+        <div>
+            {% include 'marathon_analytics/search.html' %}
+        </div>    
+    </div>
+
+    <h1>Results</h1>
+    <div class="row">
+        <table>
+            <tr>
+                <th>Place Overall</th>
+                <th>Name</th>
+                <th>Citizenship</th>
+                <th>City, State</th>
+                <th>Division</th>
+                
+                <th>First Half</th>
+                <th>Second Half</th>
+                <th>Finish Time</th>
+            </tr>
+    
+            {% for r in results %}
+            <tr>
+                
+                <td>{{r.place_overall}}</td>
+                <td>{{r.first_name}} {{r.last_name}}</a>
+                </td>
+                <td>{{r.ctz}}</td>
+                <td>{{r.city}}, {{r.state}}</td>
+                <td>{{r.gender.0}} {{r.division}}</td>
+                
+                <td>{{r.time_half1|time:"H:i:s"}}</td>
+                <td>{{r.time_half2|time:"H:i:s"}}</td>
+                <td>{{r.time_finish|time:"H:i:s"}}</td>
+             
+            </tr>
+            {% endfor %}
+    
+        </table>
+        </div>
+        
+        <!-- navigation for different pages of results -->
+        <div class="row">
+            {% if is_paginated %}
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+                 
+                    </li>
+                {% endif %}
+                    <li class="">
+                        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                    </li>
+                {% if page_obj.has_next %}
+                    <li>
+                        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+                    </li>
+                {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+
+    </div>
+    
+{% endblock %}
