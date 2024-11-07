@@ -1,0 +1,63 @@
+<!-- templates/marathon_analytics/result_detail.html -->
+{% extends 'marathon_analytics/base.html' %}
+{% block content %}
+<div class="container">
+    
+    <h1>Results</h1>
+    <div class="row">
+        <table>
+            <tr>
+                <th>Place Overall</th>
+                <th>Name</th>
+                <th>Citizenship</th>
+                <th>City, State</th>
+                <th>Division</th>
+                
+                <th>First Half</th>
+                <th>Second Half</th>
+                <th>Finish Time</th>
+            </tr>
+    
+            <tr>
+                
+                <td>{{r.place_overall}}</td>
+                <td>{{r.first_name}} {{r.last_name}}</a>
+                </td>
+                <td>{{r.ctz}}</td>
+                <td>{{r.city}}, {{r.state}}</td>
+                <td>{{r.gender.0}} {{r.division}}</td>
+                
+                <td>{{r.time_half1|time:"H:i:s"}}</td>
+                <td>{{r.time_half2|time:"H:i:s"}}</td>
+                <td>{{r.time_finish|time:"H:i:s"}}</td>
+             
+            </tr>
+    
+        </table>
+        </div>
+        
+
+        <div class="row">
+            <p>
+                {{r.first_name}} {{r.last_name}} started at {{r.start_time_of_day}}
+                and finished at {{r.finish_time_of_day}}.
+            </p>
+
+            <p>
+                {{r.first_name}} {{r.last_name}} passed {{r.get_runners_passed}}
+                runners and was passed by {{r.get_runners_passed_by}}.
+            </p>
+        </div>
+
+        <!-- display the bar chart with runners passed -->
+        <div class="row">
+            {{bar_div|safe}}
+        </div>
+
+        <!-- show the pie chart -->
+        <div>
+            {{pie_div|safe}} <!-- |safe means to "do" (render) the HTML code -->
+        </div>
+    </div>
+    
+{% endblock %}

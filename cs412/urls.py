@@ -24,7 +24,7 @@ urlpatterns = [
     path("hw/", include("hw.urls")),
     path("formdata/", include("formdata.urls")), 
     path("blog/", include("blog.urls")), 
-    path("marathon_analytics", include("marathon_analytics.urls")), # new!!
+    path("marathon_analytics/", include("marathon_analytics.urls")), # new!!
     
 ] 
 
